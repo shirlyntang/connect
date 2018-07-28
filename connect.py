@@ -22,7 +22,7 @@ def get_user_info():
 
 	found_match = False
 	key = '';
-	fields = ['username', 'name', 'age', 'school', 'hobbies', 'animals', 'foods', 'phone_number', 'picture'] #can add more
+	fields = ['username', 'name', 'age', 'school', 'hobbies', 'animals', 'foods', 'phone_number', 'pic'] #can add more
 
 	user_dict = {} # creates empty dictionary
 
@@ -35,17 +35,19 @@ def get_user_info():
 			user_dict[category] = [word.strip() for word in request.form[category].split(',')]
 
 		elif category == 'phone_number':
-			number = request.form[category].translate(None, ', ')
+			number = request.form[category].replace('()', '')
 			if len(number) == 11 and number[0] == '1':
 				number = number[1:]
 			number = '(' + number[0:3] + ')' + number[3:6] + '-' + number[6:]
 			user_dict[category] = number
 
-		elif category == 'picture':
+		elif category == 'pic':
 			user_dict[category] = get_image_list(request.form[category])
 
 		else:
 			user_dict[category] = request.form[category]
+
+	print (user_dict)
 
 	key = insert_user(user_dict)
 	found_match = match(key)
