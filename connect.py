@@ -13,6 +13,10 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
+@app.route("/form")
+def form_func():
+    return render_template("form.html")
+
 @app.route("/create_profile", methods=["POST"]) # page where user fills out form
 def get_user_info():
 
