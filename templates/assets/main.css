@@ -2,12 +2,13 @@ body {
 	background-image: url('https://media.istockphoto.com/photos/beautiful-rainbow-backgrounds-picture-id923879636?k=6&m=923879636&s=612x612&w=0&h=m39xXJRRSdAepUeZI2Agfp3dbJs8J0tPrgXs2yHP6kQ=');
 	background-size: cover;
 	background-repeat: no-repeat;
+	color: white;
+	font-family: Tahoma, Geneva, sans-serif;
 }
 
 .center
 {
-	color: white;
-	font-family: Tahoma, Geneva, sans-serif;
+	/*
 	width:1200px;
     height:200px;
     position:absolute;
@@ -15,9 +16,79 @@ body {
     top:50%;
     margin:-100px 0 0 -600px;
     text-align: center;
+    */
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	flex-direction: column;
 }
 
 .center #title
 {
 	font-size: 80px;
+}
+
+.center #button
+{
+	padding: 10px 10px;
+	color: white;
+	font-size: 20px;
+	border: 3px solid white;
+	background-color: transparent;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+}
+
+.center #button:hover 
+{
+	background-color: white;
+}
+
+.form 
+{
+	display: flex;
+	justify-content: center;/*horizontal*/
+	align-items: center; /*vertical*/
+	height: 100vh;
+	font-size: 15px;
+	flex-direction: column;
+}
+
+.form #question
+{
+	margin: 8px 8px;
+}
+
+.form #form_button
+{
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 10px;
+	margin: 10px 0px;
+	padding: 10px 10px;
+	color: white;
+	font-size: 20px;
+	border: 3px solid white;
+	background-color: transparent;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+}
+
+.form #form_button:hover {
+    background-color: white;
+}
+
+.submit_container {
+	display: flex;
+	justify-content: center; /*horizontal*/
+}
+
+input {
+    width: 60vh;
+    padding: 10px 10px;
+    margin: 2px 0px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    font-size: 15px;
 }

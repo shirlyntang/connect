@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Matchmaker</title>
+		<link rel = "stylesheet" type = "text/css" href = "assets/main.css"> 
+	</head>
+	<body>
+		<div class = form>
+			<form action="/create_profile" method="post">
+				<p id = "question">Profile Picture</p>
+				<input type="file" name="pic" accept="image/*">
+				<p id = "question">Name</p>
+				<input type = "text" name = "name" required />
+				<p id = "question">Age</p>
+				<input type = "number" name = "age" required />
+				<p id = "question">School</p>
+				<input type = "text" name = "school" required />
+				<p id = "question">Hobbies</p>
+				<input type = "text" name = "hobbies" required />
+				<p id = "question">Animal</p>
+				<input type = "text" name = "animal" required />
+				<p id = "question">Food</p>
+				<input type = "text" name = "food" required />
+				<div class = submit_container>
+					<button type="submit" id="form_button">Submit</button>
+				</div>
+			</form>
+		</div>
+	</body>
+
+</html>
