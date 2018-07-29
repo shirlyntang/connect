@@ -48,7 +48,7 @@ def get_user_info():
         else:
             user_dict[category] = request.form[category]
 
-        if category == 'name':
+        if category == 'name' or category == 'school':
             user_dict[category] = user_dict[category].title() # makes first letter of each word uppercase
         elif category == 'username' or category == 'pic':
             pass
@@ -73,15 +73,17 @@ def success(username):
     user = db.userinfo.find_one({'_id': username})
     matched_user_key = user['other_matches'][len(user['other_matches'])-1]
     matched_user = db.userinfo.find_one({'_id': matched_user_key})
-
+    hobbies_list = ', '.join(matched_user['hobbies'])
+    animals_list = ', '.join(matched_user['animals'])
+    foods_list = ', '.join(matched_user['foods'])
     return render_template("matches.html", 
         pic = matched_user['pic_image'],
         name = matched_user['name'], 
         age = matched_user['age'], 
         school = matched_user['school'], 
-        hobbies = matched_user['hobbies'], 
-        animals = matched_user['animals'], 
-        foods = matched_user['foods'],
+        hobbies = hobbies_list, 
+        animals = animals_list, 
+        foods = foods_list,
         phone_number = matched_user['phone_number']
     )
 
@@ -90,12 +92,7 @@ def fail():
     return render_template("fail.html")
 
 def get_image_list():
-    p = subprocess.Popen(["ipython", "ipython.py"],stdout=subprocess.PIPE)
-
-    object_list = []
-    for line in iter(p.stdout.readline,''):
-        object_list.append(line.rstrip())
-    return object_list
+    return []
 
 def insert_user(user_dict):
     db.userinfo.insert(user_dict)
