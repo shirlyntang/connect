@@ -13,3 +13,10 @@ function readURL(input) {
 $("#pic").change(function () {
     readURL(this);
 });
+
+function contact() {
+	var hideDiv = document.getElementById("toHide");
+	hideDiv.style.display = "none";
+	var showDiv = document.getElementById("toShow");
+	showDiv.style.display = "block";
+}

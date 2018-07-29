@@ -104,6 +104,13 @@ img
 	align-items: center;
 	height: 100vh;
 	flex-direction: column;
+	text-align: center;
+}
+
+.match #title 
+{
+	font-size: 80px;
+	margin: 20px 0px;
 }
 
 #match_pp
@@ -111,7 +118,17 @@ img
 	max-height: 200px;
 }
 
+.match_button_container
+{
+	text-align: center;
+}
+
 p
 {
 	margin: 10px 0px;
+}
+
+#toShow
+{
+	display: none;
 }
