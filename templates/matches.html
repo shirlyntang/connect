@@ -3,18 +3,23 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Matchmaker</title>
-		<link rel="shortcut icon" type="image/png" href="http://circlewomen.org/wp-content/uploads/2015/08/favicon.png" />
+		<link rel="shortcut icon" type="image/png" href="{{ url_for('static',filename='favicon.png') }}" />
 		<link rel = "stylesheet" type = "text/css" href= "{{ url_for('static',filename='main.css') }}" />
+		<!--<link rel = "stylesheet" type = "text/css" href= "../static/main.css" />-->
 	</head>
 	<body>
 		<div class = "match">
-			<img id = "match_pp" />
+			<h1 id = "title">You matched with...</h1>
+			<img id = "match_pp" src = "https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&h=350"/>
 			<p>Name: </p>
 			<p>Age: </p>
 			<p>School: </p>
 			<p>Hobbies: </p>
-			<p>Favorite Animals: </p>
+			<p id = "nice">Favorite Animals: </p>
 			<p>Favorite Foods: </p>
+			<div class = "match_button_container">
+				<button type="button" id="form_button">Contact Your Match</button>
+			</div>
 		</div>
 	</body>
 
