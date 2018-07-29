@@ -71,22 +71,19 @@ def get_user_info():
 def success(username):
     #input info of matches to html page
     user = db.userinfo.find_one({'_id': username})
-    print (user['other_matches'])
-    if len(user['other_matches'])>0:
-        matched_user_key = user['other_matches'][len(user['other_matches'])-1]
-        matched_user = db.userinfo.find_one({'_id': matched_user_key})
+    matched_user_key = user['other_matches'][len(user['other_matches'])-1]
+    matched_user = db.userinfo.find_one({'_id': matched_user_key})
 
-        return render_template("matches.html", 
-            pic = matched_user['pic_image'],
-            name = matched_user['name'], 
-            age = matched_user['age'], 
-            school = matched_user['school'], 
-            hobbies = matched_user['hobbies'], 
-            animals = matched_user['animals'], 
-            foods = matched_user['foods'],
-            phone_number = matched_user['phone_number']
-        )
-    return render_template("matches.html")
+    return render_template("matches.html", 
+        pic = matched_user['pic_image'],
+        name = matched_user['name'], 
+        age = matched_user['age'], 
+        school = matched_user['school'], 
+        hobbies = matched_user['hobbies'], 
+        animals = matched_user['animals'], 
+        foods = matched_user['foods'],
+        phone_number = matched_user['phone_number']
+    )
 
 @app.route("/fail")
 def fail():
