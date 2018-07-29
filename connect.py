@@ -65,7 +65,7 @@ def get_user_info():
 @app.route("/matches") # found matches
 def success():
 	#input info of matches to html page
-    return render_template("matches.html") # insert json object as a second parameter
+    return render_template("matches.html") # insert user fields as a second parameter
 
 def get_image_list(pic_name):
 	#insert olivia's code
@@ -83,11 +83,11 @@ def compare(person,potential):
                 points = points + 1
     return points
 
-def similar(person,json_data):
+def similar(person,all_user_data):
 
 	similarity_points = dict()
 
-    for potential in json_data:
+    for potential in all_user_data:
         if potential['id'] == person['id'] or person['id'] in potential["other_matches"]:
             similarity_points[potential['id']]=-1
         else:
@@ -119,21 +119,15 @@ def similar(person,json_data):
     return match
 
 def match(user_key):
-    data = """[{"id":"id1", "name": "Abe", "age": "22", "school":"school 1", "hobbies": ["acting"], "animals":["dog"], "foods":["apple"],"other_matches": ["hello"]},
-    {"id":"id2", "name": "Bella", "age": "22", "school":"school 2", "hobbies": ["baseball"], "animals":["cat"], "foods":["apple"],"other_matches": [""]},
-    {"id":"id3", "name": "Cat", "age": "21", "school":"school 3", "hobbies":["acting"], "animals":["dog"], "foods":["orange"],"other_matches": [""]},
-    {"id":"id4", "name": "Dan", "age": "20", "school":"school 4", "hobbies": ["nothing"], "animals":["bunny"], "foods":["poo"],"other_matches": [""]}]"""
 
-    json_data = json.loads(data)
+    all_user_data =  db.userinfo.find()
 
     user = db.userinfo.find({'_id': user_key})
 
-    match = similar(user,json_data)
+    match = similar(user,all_user_data)
 
-    for person in json_data:
+    for person in all_user_data:
         if match == person['id']:
-            print json_data[0]['other_matches']
-            json_data[0]['other_matches'].append(match)
-            print json_data[0]['other_matches']
+            user['other_matches'].append(match)
 
 app.run( debug = True )
