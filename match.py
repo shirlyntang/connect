@@ -1,4 +1,4 @@
-import pymongo, math
+import pymongo, math, json
 
 similarity_points = dict()
 
