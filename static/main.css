@@ -2,7 +2,7 @@ body {
 	background-image: url('https://media.istockphoto.com/photos/beautiful-rainbow-backgrounds-picture-id923879636?k=6&m=923879636&s=612x612&w=0&h=m39xXJRRSdAepUeZI2Agfp3dbJs8J0tPrgXs2yHP6kQ=');
 	background-size: cover;
 	background-repeat: no-repeat;
-	color: white;
+	color: black;
 	font-family: Tahoma, Geneva, sans-serif;
 }
 
@@ -89,6 +89,7 @@ input[type=file]
 	max-width: 22vh;
 }
 
-img{
+img
+{
   max-height: 100px;
 }
