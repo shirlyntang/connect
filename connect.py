@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request, redirect, json
-import pymongo, math
+import pymongo, math, subprocess
 
 uri = 'mongodb://connect:connect123@ds157901.mlab.com:57901/userinfo' #connect to database
 
@@ -42,7 +42,7 @@ def get_user_info():
             user_dict[category] = number
 
         elif category == 'pic':
-            user_dict[category] = get_image_list(request.form[category])
+            user_dict[category] = get_image_list()
             user_dict['pic_image'] = request.form[category]
 
         else:
@@ -89,9 +89,13 @@ def success(username):
 def fail():
     return render_template("fail.html")
 
-def get_image_list(pic_name):
-    #insert olivia's code
-    return ['sample']
+def get_image_list():
+    p = subprocess.Popen(["ipython", "ipython.py"],stdout=subprocess.PIPE)
+
+    object_list = []
+    for line in iter(p.stdout.readline,''):
+        object_list.append(line.rstrip())
+    return object_list
 
 def insert_user(user_dict):
     db.userinfo.insert(user_dict)
