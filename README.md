@@ -1,3 +1,3 @@
-# sfparking
+# matchmaker
 
-an app to determine which metered parking spots in the city of San Francisco are occupied
+a web application to makes matches between women in STEM!
