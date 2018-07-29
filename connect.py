@@ -64,14 +64,13 @@ def get_user_info():
     found_match = match(key)
 
     if found_match:
-        return success(user_dict['_id'])
-        #return redirect ("/matches")
+        return redirect ("/matches/"+user_dict['_id'])
     return redirect("/fail")
 
-@app.route("/matches") # found matches
-def success(user_key):
+@app.route("/matches/<username>") # found matches
+def success(username):
     #input info of matches to html page
-    user = db.userinfo.find_one({'_id': user_key})
+    user = db.userinfo.find_one({'_id': username})
     print (user['other_matches'])
     if len(user['other_matches'])>0:
         matched_user_key = user['other_matches'][len(user['other_matches'])-1]
@@ -84,7 +83,8 @@ def success(user_key):
             school = matched_user['school'], 
             hobbies = matched_user['hobbies'], 
             animals = matched_user['animals'], 
-            foods = matched_user['foods']
+            foods = matched_user['foods'],
+            phone_number = matched_user['phone_number']
         )
     return render_template("matches.html")
 
