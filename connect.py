@@ -43,6 +43,7 @@ def get_user_info():
 
         elif category == 'pic':
             user_dict[category] = get_image_list(request.form[category])
+            user_dict['pic_image'] = request.form[category]
 
         else:
             user_dict[category] = request.form[category]
@@ -67,7 +68,7 @@ def get_user_info():
         #return redirect ("/matches")
     return redirect("/fail")
 
-@app.route("/matches", methods = ["GET"]) # found matches
+@app.route("/matches") # found matches
 def success(user_key):
     #input info of matches to html page
     user = db.userinfo.find_one({'_id': user_key})
@@ -75,11 +76,9 @@ def success(user_key):
     if len(user['other_matches'])>0:
         matched_user_key = user['other_matches'][len(user['other_matches'])-1]
         matched_user = db.userinfo.find_one({'_id': matched_user_key})
-        print ("\n\n")
-        print (matched_user)
-        print ("\n\n")
+
         return render_template("matches.html", 
-            pic = matched_user['pic'],
+            pic = matched_user['pic_image'],
             name = matched_user['name'], 
             age = matched_user['age'], 
             school = matched_user['school'], 
