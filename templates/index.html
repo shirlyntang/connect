@@ -4,11 +4,13 @@
 		<meta charset="UTF-8">
 		<title>Matchmaker</title>
 		<link rel="shortcut icon" type="image/png" href="{{ url_for('static',filename='favicon.png') }}" />
-		<link rel = "stylesheet" type = "text/css" href= "{{ url_for('static',filename='main.css') }}" />
+		<!--<link rel = "stylesheet" type = "text/css" href= "{{ url_for('static',filename='main.css') }}" />-->
+		<link rel = "stylesheet" type = "text/css" href= "../static/main.css" />
 	</head>
 	<body>
 		<div class = center>
-			<h1 id="title">Match with a new friend!</h1>
+			<h1 id="title">Matchmaker</h1>
+			<h2 id="subheader">Connect with another woman in STEM. Share your experiences.</h2>
 			<br>
 			<a href = "/form"><input type="button" class="button" value="FIND MY MATCH" id="button"></a>
 		</div>

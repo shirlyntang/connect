@@ -13,11 +13,13 @@ body {
 	align-items: center;
 	height: 100vh;
 	flex-direction: column;
+	text-align: center;
 }
 
 .center #title
 {
 	font-size: 80px;
+	margin: 20px 0px;
 }
 
 .center #button
@@ -107,4 +109,9 @@ img
 #match_pp
 {
 	max-height: 200px;
+}
+
+p
+{
+	margin: 10px 0px;
 }
